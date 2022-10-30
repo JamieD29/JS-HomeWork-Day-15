@@ -21,4 +21,4 @@ function CableInvoice (guest, ports, channels){
 
 var result = CableInvoice(client,ports, channels);
 
-console.log(result);
+console.log("Bài 2: Số tiền cáp mà khách hàng:", client,"phải trả là:",result);
