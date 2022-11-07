@@ -1,71 +1,38 @@
-// Nhập thông tin cứng ở here
 
-var studentName="Jamie";
-var subject1 = 5; 
-var subject2= 10;
-var subject3 = 5;
-var area = "X";
-var priorityOb= 0;
-
-
-var passingGrade= 22;
 //////////////////
 
-function CheckingMarks(pG,s1,s2,s3,ar,pOb){
-    // // Điểm chuẩn
-    // pG = passingGrade;
-    // //Khu vực
-    // ar= area;
-    // //Đối tượng
-    // pOb= priorityOb;
-    // //Điểm 3 môn
-    // s1=subject1;
-    // s2=subject2;
-    // s3=subject3;
-   
+function CheckingMarks() {
+    var subject1 = +document.getElementById('mon1').value;
+    var subject2 = +document.getElementById('mon2').value;
+    var subject3 = +document.getElementById('mon3').value;
+    var area = +document.getElementById('khuVuc').value;
+    var priorityOb = +document.getElementById('doiTuong').value;
+    var passingGrade = +document.getElementById('diemChuan').value;
 
-
-    var sumS = s1 + s2 + s3;
+    var sumS = subject1 + subject2 + subject3 + area + priorityOb;
 
     var result = "";
 
-    if(s1 === 0 || s2 === 0 || s3 === 0){
+   
 
-       return result=" điểm KHÔNG đạt yêu cầu để xét tuyển.";
-        
-    }
-    else{
+    if (subject1 === 0 || subject2 === 0 || subject3 === 0) {
 
-        if(ar ==="A"){
-            sumS +=2;
-        }else if(ar === "B"){
-            sumS+=1;
-        }else if(ar==="C"){
-            sumS+=0.5;
-        }else{
-            
-        }
-    
-        if(pOb === 1){
-            sumS+=2.5;
-        }else if(pOb===2){
-            sumS+=1.5;
-        }else if(pOb === 3){
-            sumS+=1;
-        }else{
-    
-        }
-    
-        if(sumS >= pG){
-           return result=" đã ĐẠT tiêu chuẩn đậu.";
-        }else{
-        return result=" KHÔNG đủ điểm.";
-        }
-        
+        result = "Điểm của bạn KHÔNG đạt yêu cầu để xét tuyển."; 
+        document.getElementById('ex1Result').innerHTML = result;
+        return;
     }
+    else if (sumS >= passingGrade) {
+
+         result = "Bạn đã ĐẠT tiêu chuẩn đậu.";
+         document.getElementById('ex1Result').innerHTML = result;
+         document.getElementById('tongDiem').innerHTML = 'Tổng điểm: ' + sumS;
+    } else {
+         result = "Bạn KHÔNG đủ điểm đậu.";
+         document.getElementById('ex1Result').innerHTML = result;
+         document.getElementById('tongDiem').innerHTML = 'Tổng điểm: ' + sumS;
+    }
+
+
 }
 
 
-var result = CheckingMarks(passingGrade, subject1, subject2, subject3, area, priorityOb);
-
-console.log("Bài 1: Thí sinh "+ studentName + result);
